@@ -33,5 +33,11 @@ calculate_gc_pct <- function(seq_string){
   
   return(gc_content)}
 
+get_size_class <- function(seq){
+   #Calculate the GC-content for one or more sequences
+   ear_lengths <- ifelse(seq > 10, "large", "small")
+   return(ear_lengths)
+}
+
 gc_pct <- calculate_gc_pct(data$dnaseq)
 
