@@ -33,11 +33,33 @@ calculate_gc_pct <- function(seq_string){
   
   return(gc_content)}
 
+# FUNCTION
+# get the size class of the individual
+# use a threshold size of 10
 get_size_class <- function(seq){
-   #Calculate the GC-content for one or more sequences
+   # Calculate the size class for one or more sequences
    ear_lengths <- ifelse(seq > 10, "large", "small")
    return(ear_lengths)
 }
 
-gc_pct <- calculate_gc_pct(data$dnaseq)
+# create a dataframe with information for each individual
+# ID, ear length class, GC content for each individual
+
+# use the function to create a data frame
+# use the functions when creating the attributes
+elf_data_analyzed <- data.frame(data$id,
+                                gc_pct = calculate_gc_pct(data$dnaseq),
+                                size_class = get_size_class(data$earlength))
+
+# save data frame as csv files
+write.csv(elf_data_analyzed,"data/houseelf_earlength_analyzed_1.csv")
+
+
+
+
+
+
+
+
+
 
